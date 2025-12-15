@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="AppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Usermanagement</Value>
+    </Setting>
+    <Setting Name="SysAd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Admin</Value>
+    </Setting>
+    <Setting Name="OfficeName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Provincial Budget Office</Value>
+    </Setting>
+    <Setting Name="OfficeAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Capiz Provincial Capitol, Roxas City, Capiz</Value>
+    </Setting>
+    <Setting Name="OfficeEmail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">pbocapiz@gmail.com</Value>
+    </Setting>
+    <Setting Name="OfficePhone" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(036) 6210097</Value>
+    </Setting>
+    <Setting Name="EffectiveDate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">September 5, 2025</Value>
+    </Setting>
+    <Setting Name="OfficerName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>
