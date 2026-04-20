@@ -151,7 +151,6 @@ Public Class MySQLCore
 
         End Using
     End Function
-
     'Local Insert/Update SQL statement
     Friend Sub MySql_ExecuteNonQueryString(ByVal tablename As String, columnvalues As Dictionary(Of String, String), Optional whereClause As String = Nothing, Optional usersqltype As Integer = 1)
         Using cmd As New MySqlCommand
@@ -176,7 +175,7 @@ Public Class MySQLCore
                         Dim columns As String = String.Join(",", columnvalues.Keys)
                         Dim paramNames As String = String.Join(",", columnvalues.Keys.Select(Function(k) "@" & k))
                         SqlNonQuery = $"INSERT INTO {tablename}({columns}) VALUES({paramNames});"
-
+                        'MsgBox(SqlNonQuery)
                         ' Add parameters
                         For Each kvp In columnvalues
                             cmd.Parameters.AddWithValue("@" & kvp.Key, kvp.Value)
@@ -212,7 +211,6 @@ Public Class MySQLCore
             End Try
         End Using
     End Sub
-
     Friend Function MySql_NonQueryScript(ByVal tablename As String, columnvalues As Dictionary(Of String, String), Optional whereClause As String = Nothing, Optional usersqltype As Integer = 1) As String
         'Prepare the parameters
         Dim sqlcolumns(columnvalues.Count - 1) As String,
@@ -425,5 +423,34 @@ Public Class MySQLCore
             End Try
         End Using
     End Sub
+    Public Function MySql_ExecuteNonQueryRawSQL(ByVal command As String) As DataTable
+        Using cmd As New MySqlCommand
+            Dim da As New MySqlDataAdapter   'multiple result
+            Dim dt As New DataTable          'table
+            Try
 
+                Conn.Open()
+                With cmd
+                    .Connection = Conn
+                    .CommandType = CommandType.Text
+                    .CommandText = command
+                End With
+                da.SelectCommand = cmd
+                da.Fill(dt)
+
+                cmd.Dispose()
+                da.Dispose()
+                Conn.Close()
+
+                Return dt
+
+            Catch ex As Exception
+                MsgBox("Datatable :: " & Err.Description)
+                'Err.Clear()
+                cmd.Dispose()
+                Conn.Close()
+                Return Nothing
+            End Try
+        End Using
+    End Function
 End Class

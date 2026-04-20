@@ -13,7 +13,7 @@
         dgvOffice.DataSource = OfficeDT
         Dim oldcolumns() = {"officedescription", "officeaccronym"}
         Dim columns() = {"Officename", "Accronym"}
-        Dim cols() = {"id", "officeid", "subofficeid", "officetypeid", "sectorid", "aipofficeid", "mandatory_aipcode", "officecode_pbo", "officecode_acctg", "officeheadpersonnel", "officeheadpos", "officename", "officeadd", "officelevelid", "open_office", "logdate"}
+        Dim cols() = {"id", "officeid", "is_spa", "subofficeid", "officetypeid", "sectorid", "aipofficeid", "mandatory_aipcode", "officecode_pbo", "officecode_acctg", "officeheadpersonnel", "officeheadpos", "officename", "officeadd", "officelevelid", "open_office", "logdate"}
         Datagrid_HideColumn(dgvOffice, cols)
         Datagrid_RenameColumn(dgvOffice, oldcolumns, columns)
         dvWidthOffice()
@@ -58,7 +58,6 @@
             txtoffice.Text = officedescription
             txtoffice.Text = value
             dgvOffice.Visible = False
-            Label10.Text = officeid
             txtfirstname.Focus()
         End If
     End Sub
@@ -77,7 +76,6 @@
                 txtoffice.Text = officedescription
                 dgvOffice.Visible = False
                 txtfirstname.Focus()
-                Label10.Text = officeid
             End If
         ElseIf e.KeyCode = Keys.Back Then
             txtoffice.Focus()
@@ -141,13 +139,6 @@
                txtpassword.Text = "" OrElse
                txtrepassword.Text = ""
     End Function
-    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
-        PrivacyForm.ShowDialog()
-    End Sub
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        TermsAndConditionForm.ShowDialog()
-    End Sub
-
     Private Sub dgvOffice_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOffice.CellClick
         If e.RowIndex >= 0 Then
             Dim selectedRow As DataGridViewRow = dgvOffice.Rows(e.RowIndex)
@@ -159,7 +150,6 @@
             txtoffice.Text = value
             dgvOffice.Visible = False
             txtfirstname.Focus()
-            Label10.Text = officeid
         End If
     End Sub
 End Class

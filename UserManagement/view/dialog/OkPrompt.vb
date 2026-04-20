@@ -7,7 +7,7 @@
         Main.Activate()
     End Sub
     Private Sub Msgform_Load(sender As Object, e As EventArgs) Handles Me.Load
-        AppName.Text = My.MySettings.Default.AppName
+
         btnclose.Focus()
     End Sub
     Private Sub btnclose_KeyDown(sender As Object, e As KeyEventArgs) Handles btnclose.KeyDown

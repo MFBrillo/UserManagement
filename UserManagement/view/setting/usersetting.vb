@@ -34,11 +34,17 @@
         Dim SqlLoad As New MySQLCore
         CustomYesNoPrompt("Update User", "Do you want to Update Your Information?")
         If YesNoPrompt.YesOption = True Then
-            Dim user_colvals As New Dictionary(Of String, String)()
-            user_colvals.Add("firstname", $"{txtfirstname.Text}")
-            user_colvals.Add("middlename", $"{txtmiddlename.Text}")
-            user_colvals.Add("lastname", $"{txtlastname.Text}")
-            user_colvals.Add("jobposition", $"{txtjobposition.Text}")
+            'Dim user_colvals As New Dictionary(Of String, String)()
+            'user_colvals.Add("firstname", $"{txtfirstname.Text}")
+            'user_colvals.Add("middlename", $"{txtmiddlename.Text}")
+            'user_colvals.Add("lastname", $"{txtlastname.Text}")
+            'user_colvals.Add("jobposition", $"{txtjobposition.Text}")
+            Dim user_colvals As New Dictionary(Of String, String) From {
+                {"firstname", $"{txtfirstname.Text}"},
+                {"middlename", $"{txtmiddlename.Text}"},
+                {"lastname", $"{txtlastname.Text}"},
+                {"jobposition", $"{txtjobposition.Text}"}
+            }
             SqlLoad.MySql_ExecuteNonQueryString("gl_users", user_colvals, $"id={Variables.login_userid}", 2)
             CustomMsg("Successfully Update", "Your Information is Successfully Update")
             load_user()

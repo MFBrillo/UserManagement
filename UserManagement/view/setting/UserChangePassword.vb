@@ -34,8 +34,9 @@
                 If result = DialogResult.Yes Then
                     Dim HashPassword = MD5Password(txtnewpassword.Text)
                     'Variables.hashpassword = HashPassword
-                    Dim user_colvals As New Dictionary(Of String, String)()
-                    user_colvals.Add("hashpassword", $"{HashPassword}")
+                    Dim user_colvals As New Dictionary(Of String, String) From {
+                        {"hashpassword", HashPassword}
+                    }
                     SqlLoad.MySql_ExecuteNonQueryString("gl_users", user_colvals, $"id={ Variables.login_userid}", 2)
                     Me.DialogResult = DialogResult.OK
                 End If

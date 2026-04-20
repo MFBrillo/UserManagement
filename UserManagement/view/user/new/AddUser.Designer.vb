@@ -26,9 +26,6 @@ Partial Class AddUser
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.txtoffice = New System.Windows.Forms.TextBox()
         Me.dgvOffice = New System.Windows.Forms.DataGridView()
         Me.btnclose = New System.Windows.Forms.LinkLabel()
@@ -48,8 +45,6 @@ Partial Class AddUser
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtfirstname = New System.Windows.Forms.TextBox()
         Me.txtport = New System.Windows.Forms.Label()
-        Me.cbpolicy = New Bunifu.Framework.UI.BunifuCheckbox()
-        Me.BunifuCheckbox1 = New Bunifu.Framework.UI.BunifuCheckbox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dgvOffice, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,11 +86,6 @@ Partial Class AddUser
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Controls.Add(Me.BunifuCheckbox1)
-        Me.Panel2.Controls.Add(Me.cbpolicy)
-        Me.Panel2.Controls.Add(Me.Label10)
-        Me.Panel2.Controls.Add(Me.LinkLabel2)
-        Me.Panel2.Controls.Add(Me.LinkLabel1)
         Me.Panel2.Controls.Add(Me.txtoffice)
         Me.Panel2.Controls.Add(Me.dgvOffice)
         Me.Panel2.Controls.Add(Me.Panel1)
@@ -121,37 +111,6 @@ Partial Class AddUser
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(650, 523)
         Me.Panel2.TabIndex = 1
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(69, 412)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(45, 13)
-        Me.Label10.TabIndex = 39
-        Me.Label10.Text = "Label10"
-        '
-        'LinkLabel2
-        '
-        Me.LinkLabel2.AutoSize = True
-        Me.LinkLabel2.Location = New System.Drawing.Point(425, 491)
-        Me.LinkLabel2.Name = "LinkLabel2"
-        Me.LinkLabel2.Size = New System.Drawing.Size(35, 13)
-        Me.LinkLabel2.TabIndex = 38
-        Me.LinkLabel2.TabStop = True
-        Me.LinkLabel2.Text = "Policy"
-        Me.LinkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(353, 491)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(31, 13)
-        Me.LinkLabel1.TabIndex = 37
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Term"
-        Me.LinkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txtoffice
         '
@@ -386,30 +345,6 @@ Partial Class AddUser
         Me.txtport.Text = "Firstname"
         Me.txtport.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'cbpolicy
-        '
-        Me.cbpolicy.BackColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(135, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.cbpolicy.ChechedOffColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(135, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.cbpolicy.Checked = False
-        Me.cbpolicy.CheckedOnColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(117, Byte), Integer))
-        Me.cbpolicy.ForeColor = System.Drawing.Color.White
-        Me.cbpolicy.Location = New System.Drawing.Point(332, 484)
-        Me.cbpolicy.Name = "cbpolicy"
-        Me.cbpolicy.Size = New System.Drawing.Size(20, 20)
-        Me.cbpolicy.TabIndex = 40
-        '
-        'BunifuCheckbox1
-        '
-        Me.BunifuCheckbox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(135, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.BunifuCheckbox1.ChechedOffColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(135, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.BunifuCheckbox1.Checked = False
-        Me.BunifuCheckbox1.CheckedOnColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(117, Byte), Integer))
-        Me.BunifuCheckbox1.ForeColor = System.Drawing.Color.White
-        Me.BunifuCheckbox1.Location = New System.Drawing.Point(399, 484)
-        Me.BunifuCheckbox1.Name = "BunifuCheckbox1"
-        Me.BunifuCheckbox1.Size = New System.Drawing.Size(20, 20)
-        Me.BunifuCheckbox1.TabIndex = 41
-        '
         'AddUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -452,9 +387,4 @@ Partial Class AddUser
     Friend WithEvents Label9 As Label
     Friend WithEvents dgvOffice As DataGridView
     Friend WithEvents txtoffice As TextBox
-    Friend WithEvents LinkLabel2 As LinkLabel
-    Friend WithEvents LinkLabel1 As LinkLabel
-    Friend WithEvents Label10 As Label
-    Friend WithEvents BunifuCheckbox1 As Bunifu.Framework.UI.BunifuCheckbox
-    Friend WithEvents cbpolicy As Bunifu.Framework.UI.BunifuCheckbox
 End Class

@@ -203,6 +203,20 @@
       <DependentUpon>Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="report\ChargeSlip.vb">
+      <DependentUpon>ChargeSlip.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="report\ChargeSlipPPA.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChargeSlipPPA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="connection\ConfigManager.vb" />
     <Compile Include="connection\MySQLConn.vb" />
     <Compile Include="connection\UserConfig.vb" />
@@ -228,6 +242,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="report\ReportPPA.Designer.vb">
+      <DependentUpon>ReportPPA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="report\ReportPPA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="report\ReportRegular.Designer.vb">
+      <DependentUpon>ReportRegular.vb</DependentUpon>
+    </Compile>
+    <Compile Include="report\ReportRegular.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="sqlScript\MySQLCore.vb" />
     <Compile Include="view\adminsetting\AdminInfo.Designer.vb">
@@ -282,6 +308,30 @@
       <DependentUpon>UserPendingForm.vb</DependentUpon>
     </Compile>
     <Compile Include="view\dialog\UserPendingForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\pr\PRDashboard.Designer.vb">
+      <DependentUpon>PRDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\pr\PRDashboard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\pr\PRAmount.Designer.vb">
+      <DependentUpon>PRAmount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\pr\PRAmount.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\pr\PRDetail.Designer.vb">
+      <DependentUpon>PRDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\pr\PRDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\pr\PRRecord.Designer.vb">
+      <DependentUpon>PRRecord.vb</DependentUpon>
+    </Compile>
+    <Compile Include="view\pr\PRRecord.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="view\report\PrivacyForm.Designer.vb">
@@ -373,11 +423,27 @@
     <EmbeddedResource Include="app\Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="report\ChargeSlip.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChargeSlip.vb</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report\ChargeSlipPPA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChargeSlipPPA.vb</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report\ReportPPA.resx">
+      <DependentUpon>ReportPPA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report\ReportRegular.resx">
+      <DependentUpon>ReportRegular.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\adminsetting\AdminInfo.resx">
       <DependentUpon>AdminInfo.vb</DependentUpon>
@@ -405,6 +471,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\dialog\UserPendingForm.resx">
       <DependentUpon>UserPendingForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\pr\PRDashboard.resx">
+      <DependentUpon>PRDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\pr\PRAmount.resx">
+      <DependentUpon>PRAmount.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\pr\PRDetail.resx">
+      <DependentUpon>PRDetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\pr\PRRecord.resx">
+      <DependentUpon>PRRecord.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\report\PrivacyForm.resx">
       <DependentUpon>PrivacyForm.vb</DependentUpon>
@@ -508,6 +586,7 @@
     <None Include="Resources\eye.png" />
     <None Include="Resources\AdminSetting.png" />
     <None Include="Resources\Support.png" />
+    <None Include="Resources\add.png" />
     <Content Include="Support.ico" />
     <Content Include="view\report\Privacy.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -30,7 +30,7 @@
         dgvOffice.DataSource = OfficeDT
         Dim oldcolumns() = {"officedescription", "officeaccronym"}
         Dim columns() = {"Officename", "Accronym"}
-        Dim cols() = {"id", "officeid", "subofficeid", "officetypeid", "sectorid", "aipofficeid", "mandatory_aipcode", "officecode_pbo", "officecode_acctg", "officeheadpersonnel", "officeheadpos", "officename", "officeadd", "officelevelid", "open_office", "logdate"}
+        Dim cols() = {"id", "officeid", "subofficeid", "is_spa", "officetypeid", "sectorid", "aipofficeid", "mandatory_aipcode", "officecode_pbo", "officecode_acctg", "officeheadpersonnel", "officeheadpos", "officename", "officeadd", "officelevelid", "open_office", "logdate"}
         Datagrid_HideColumn(dgvOffice, cols)
         Datagrid_RenameColumn(dgvOffice, oldcolumns, columns)
         dvWidthOffice()

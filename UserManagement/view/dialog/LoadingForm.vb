@@ -1,15 +1,12 @@
 ﻿Public Class LoadingForm
     Private Sub LoadingForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Timer1.Interval = 50
-        Timer1.Start()
+        ' Optional: make sure form is on top and transparent background
+        Me.BringToFront()
+        Me.TopMost = True
+    End Sub
+    Public Sub SetMessage(msg As String)
+        lblMessage.Text = msg
+        Application.DoEvents() ' force repaint
     End Sub
 
-    Private dotCount As Integer = 0
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If BunifuCircleProgressbar1.Value >= BunifuCircleProgressbar1.MaxValue Then
-            BunifuCircleProgressbar1.Value = 0
-        Else
-            BunifuCircleProgressbar1.Value += 5
-        End If
-    End Sub
 End Class

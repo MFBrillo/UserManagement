@@ -25,6 +25,7 @@ Partial Class Main
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.btnPr = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.btnUserSetting = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.btnAdminSetting = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.btnSignOut = New Bunifu.Framework.UI.BunifuFlatButton()
@@ -62,6 +63,7 @@ Partial Class Main
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.Panel5.Controls.Add(Me.btnPr)
         Me.Panel5.Controls.Add(Me.btnUserSetting)
         Me.Panel5.Controls.Add(Me.btnAdminSetting)
         Me.Panel5.Controls.Add(Me.btnSignOut)
@@ -73,6 +75,42 @@ Partial Class Main
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(212, 577)
         Me.Panel5.TabIndex = 2
+        '
+        'btnPr
+        '
+        Me.btnPr.Active = False
+        Me.btnPr.Activecolor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(56, Byte), Integer))
+        Me.btnPr.BackColor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnPr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnPr.BorderRadius = 0
+        Me.btnPr.ButtonText = "     Purchase Request"
+        Me.btnPr.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnPr.DisabledColor = System.Drawing.Color.Gray
+        Me.btnPr.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnPr.Iconcolor = System.Drawing.Color.Transparent
+        Me.btnPr.Iconimage = CType(resources.GetObject("btnPr.Iconimage"), System.Drawing.Image)
+        Me.btnPr.Iconimage_right = Nothing
+        Me.btnPr.Iconimage_right_Selected = Nothing
+        Me.btnPr.Iconimage_Selected = Nothing
+        Me.btnPr.IconMarginLeft = 30
+        Me.btnPr.IconMarginRight = 0
+        Me.btnPr.IconRightVisible = True
+        Me.btnPr.IconRightZoom = 0R
+        Me.btnPr.IconVisible = True
+        Me.btnPr.IconZoom = 50.0R
+        Me.btnPr.IsTab = False
+        Me.btnPr.Location = New System.Drawing.Point(0, 144)
+        Me.btnPr.Name = "btnPr"
+        Me.btnPr.Normalcolor = System.Drawing.Color.FromArgb(CType(CType(24, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnPr.OnHovercolor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(53, Byte), Integer), CType(CType(67, Byte), Integer))
+        Me.btnPr.OnHoverTextColor = System.Drawing.Color.White
+        Me.btnPr.selected = False
+        Me.btnPr.Size = New System.Drawing.Size(212, 48)
+        Me.btnPr.TabIndex = 11
+        Me.btnPr.Text = "     Purchase Request"
+        Me.btnPr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnPr.Textcolor = System.Drawing.Color.White
+        Me.btnPr.TextFont = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         '
         'btnUserSetting
         '
@@ -448,4 +486,5 @@ Partial Class Main
     Friend WithEvents lblusername As Label
     Friend WithEvents btnAdminSetting As Bunifu.Framework.UI.BunifuFlatButton
     Friend WithEvents btnUserSetting As Bunifu.Framework.UI.BunifuFlatButton
+    Friend WithEvents btnPr As Bunifu.Framework.UI.BunifuFlatButton
 End Class

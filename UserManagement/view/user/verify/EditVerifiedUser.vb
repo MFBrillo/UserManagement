@@ -12,7 +12,7 @@ Public Class EditVerifiedUser
     Dim accesslevelStr As String
     Private Sub lblclose_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblclose.LinkClicked
         Opaque.Close()
-        Me.Close()
+        Me.DialogResult = DialogResult.Cancel
         Main.Activate()
     End Sub
     Sub Custom_LoadUser()
@@ -49,7 +49,7 @@ Public Class EditVerifiedUser
         dgvOffice.DataSource = OfficeDT
         Dim oldcolumns() = {"officedescription", "officeaccronym"}
         Dim columns() = {"Officename", "Accronym"}
-        Dim cols() = {"id", "officeid", "subofficeid", "officetypeid", "sectorid", "aipofficeid", "mandatory_aipcode", "officecode_pbo", "officecode_acctg", "officeheadpersonnel", "officeheadpos", "officename", "officeadd", "officelevelid", "open_office", "logdate"}
+        Dim cols() = {"id", "officeid", "subofficeid", "is_spa", "officetypeid", "sectorid", "aipofficeid", "mandatory_aipcode", "officecode_pbo", "officecode_acctg", "officeheadpersonnel", "officeheadpos", "officename", "officeadd", "officelevelid", "open_office", "logdate"}
         Datagrid_HideColumn(dgvOffice, cols)
         Datagrid_RenameColumn(dgvOffice, oldcolumns, columns)
         dvWidthOffice()
@@ -60,84 +60,95 @@ Public Class EditVerifiedUser
         Set_GridColWidth(columnWidths, dgvOffice)
     End Sub
     Private Async Sub btnchangepassword_Click(sender As Object, e As EventArgs) Handles btnchangepassword.Click
-        CustomYesNoPrompt("Change Password", "You want to Change Password")
+        ' Ask user if they want to change password
+        CustomYesNoPrompt("Change Password", "Do you want to change your password?")
 
         If YesNoPrompt.YesOption = True Then
-            Dim SqlLoad As New MySQLCore
-            Opaque.Show()
-
+            ' Open verification dialog
             Dim result As DialogResult
             Using frm As New VerifyChangePassword()
+                Opaque.Show()
                 result = frm.ShowDialog()
             End Using
 
             If result = DialogResult.OK Then
-                Dim HashPassword = MD5Password(Variables.newpassword)
+                ' Hash new password using MD5
+                Dim HashPassword As String = MD5Password(Variables.newpassword)
 
-                no_email()
+                ' Ensure email sender is set
+                EnsureEmailFrom()
+
                 Dim recipient As String = Variables.emailfrom
+                If String.IsNullOrEmpty(recipient) Then
+                    CustomMsg("Warning", "No email address configured.")
+                    Exit Sub
+                End If
 
-                ' 🔹 Show loading while checking host
                 Dim loading As New LoadingForm()
+                loading.SetMessage("Checking email host...")
                 loading.Show()
-                loading.Refresh()
+                loading.BringToFront()
+                Application.DoEvents()
+                Try
+                    ' Show loading form modelessly
+                    loading.Show()
+                    loading.BringToFront()
+                    Application.DoEvents() ' Ensure it paints
 
-                Dim isValid As Boolean = Await Task.Run(Function()
-                                                            Return EmailChecker.IsValidEmailHost(recipient)
-                                                        End Function)
+                    ' Check email host asynchronously
+                    Dim isValid As Boolean = Await Task.Run(Function()
+                                                                Return EmailChecker.IsValidEmailHost(recipient)
+                                                            End Function)
+                    loading.Close()
 
-                loading.Close()
+                    If isValid Then
+                        Variables.emailto = recipient
 
-                If isValid Then
-                    Variables.emailto = recipient
-                    Dim subject As String = "Password Reset Notification – " & Variables.username
-                    Dim body As String = "Hello " & Variables.username & "," & vbCrLf & vbCrLf &
-                                     "Your new password is: " & Variables.newpassword & vbCrLf & vbCrLf &
-                                     "Please change it after logging in." & vbCrLf & vbCrLf &
-                                     "Regards," & vbCrLf &
-                                     "PBO-DAG Team"
+                        Dim subject As String = "Password Reset Notification – " & Variables.username
+                        Dim body As String = $"Hello {Variables.username},{vbCrLf}{vbCrLf}" &
+                                         $"Your new password is: {Variables.newpassword}{vbCrLf}{vbCrLf}" &
+                                         $"Please change it after logging in.{vbCrLf}{vbCrLf}" &
+                                         "Regards," & vbCrLf &
+                                         "PBO-DAG Team"
 
-                    If Variables.emailto <> "" Then
-                        ' 🔹 Show loading while sending + saving
-                        loading = New LoadingForm()
-                        loading.Show()
-                        loading.Refresh()
-
+                        ' Send email and update DB asynchronously
                         Await Task.Run(Sub()
                                            EmailModule.SendEmail(Variables.emailto, subject, body)
 
-                                           Dim columnWidths As New Dictionary(Of String, String)()
-                                           columnWidths.Add("hashpassword", HashPassword)
-                                           SqlLoad.MySql_ExecuteNonQueryString("gl_users", columnWidths, $"id ={Variables.id}", 2)
+                                           Dim SqlLoad As New MySQLCore()
+                                           Dim columnValues As New Dictionary(Of String, String) From {{"hashpassword", HashPassword}}
+                                           SqlLoad.MySql_ExecuteNonQueryString("gl_users", columnValues, $"id={Variables.id}", 2)
                                        End Sub)
 
-                        loading.Close()
-
-                        CustomMsg("Updated", "Your password has been changed and emailed.")
+                        CustomMsg("Updated", "Your password has been changed and emailed successfully.")
                     Else
-                        CustomMsg("Warning", "Please enter an email address.")
+                        ' Invalid email host
+                        CustomMsg("Error", "Invalid email address or host. Please check your email.")
                         Using frm As New VerifyChangePassword()
                             Opaque.Show()
                             frm.ShowDialog()
                         End Using
                     End If
-                Else
-                    Using frm As New VerifyChangePassword()
-                        Opaque.Show()
-                        frm.ShowDialog()
-                    End Using
-                End If
+                Catch ex As Exception
+                    CustomMsg("Error", "Failed to change password: " & ex.Message)
+                Finally
+                    ' Always close loading form
+                    If Not loading.IsDisposed Then
+                        loading.Close()
+                    End If
+                End Try
             End If
 
         ElseIf YesNoPrompt.NoOption = True Then
+            ' User chose "No" → open EditVerifiedUser form
             Using frm As New EditVerifiedUser()
                 Opaque.Show()
                 frm.ShowDialog()
             End Using
         End If
     End Sub
-    Sub no_email()
-        If Variables.emailfrom = "" Then
+    Private Sub EnsureEmailFrom()
+        If String.IsNullOrEmpty(Variables.emailfrom) Then
             Variables.emailfrom = "crushneq@gmail.com"
         End If
     End Sub

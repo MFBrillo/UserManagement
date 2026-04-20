@@ -3,6 +3,13 @@
         InitializeComponent()
         Me.KeyPreview = True  ' Enable key preview at the form level
     End Sub
+    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim mySql As New MySQLCore
+        mySql.MySql_CheckConn(0, pbStatus)
+        Txtpassword.Text = ""
+        Txtusername.Text = ""
+        LoadServerYear()
+    End Sub
     Private Sub lblclose_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblclose.LinkClicked
         Dim result As DialogResult
         result = MessageBox.Show("Do you want to Close the Application?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -19,18 +26,22 @@
         Dim hashpassword As String = MD5Encryption.MD5Password(password)
         ' MySQL Query to Validate Login
         Dim mySql As New MySQLCore
-        Dim columns As String = "id,username, hashpassword,accesslevel, officeid"
+        Dim columns As String = "id, username, hashpassword, accesslevel, officeid"
         Dim tablename As String = "gl_users"
         Dim whereclause As String = $"WHERE username = '{username}' AND hashpassword = '{hashpassword}'"
         Dim resultTable As DataTable = mySql.MySql_SelectString(columns, tablename, Nothing, whereclause)
         If CheckCredentials(username, hashpassword) Then
+            My.MySettings.Default.ServerYear = Variables.ServerYear
+            My.MySettings.Default.Save()
             If Variables.login_accesslevel <> 3 Then
-
                 'MsgBox("Successful Login!", MsgBoxStyle.Information, "Log in")
                 CustomMsg("Log in", "Successful Login!")
                 Main.btnDashboard.Visible = True
                 Main.btnUserManagment.Visible = True
                 Main.btnChangeSign.Visible = False
+
+                Variables.officeid = 0
+
                 If Variables.login_accesslevel <> 2 Then
                     Main.btnAdminSetting.Visible = True
                 Else
@@ -43,12 +54,14 @@
             Else
                 CustomMsg("Log in", "Successful Login!")
                 Main.btnDashboard.Visible = False
-                Main.btnUserManagment.Visible = False
+                Main.btnUserManagment.Visible = True
                 Main.btnChangeSign.Visible = True
+
                 Main.btnAdminSetting.Visible = False
-                Dim uc = New OfficeSignatory
+                Dim uc = New PRDashboard
                 Main.ShowUserControl(uc)
             End If
+
             Main.btnUserSetting.Visible = True
             Main.Activate()
             Opaque.Close()
@@ -72,7 +85,6 @@
         End If
     End Sub
     Private Sub BtnSignUp_Click(sender As Object, e As EventArgs) Handles BtnSignUp.Click
-
         AcceptForm.ShowDialog()
     End Sub
     Private Function CheckCredentials(username As String, hashpassword As String) As Boolean
@@ -121,12 +133,7 @@
         End If
     End Sub
 
-    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim mySql As New MySQLCore
-        mySql.MySql_CheckConn(0, pbStatus)
-        Txtpassword.Text = ""
-        Txtusername.Text = ""
-    End Sub
+
     Private Sub Txtusername_KeyDown(sender As Object, e As KeyEventArgs) Handles Txtusername.KeyDown
         If Txtusername.Text = "moi" Then
             ' Check if Ctrl + Shift + Enter are pressed
@@ -162,4 +169,17 @@
     Private Sub btneye_MouseUp(sender As Object, e As MouseEventArgs) Handles btneye.MouseUp
         Txtpassword.UseSystemPasswordChar = True
     End Sub
+    Public Sub LoadServerYear()
+
+        Dim SqlLoad As New MySQLCore
+        Dim serverDT As DataTable = SqlLoad.MySQL_Datatable("all_serverdate")
+
+        If serverDT IsNot Nothing AndAlso serverDT.Rows.Count > 0 Then
+            Variables.ServerYear = Convert.ToDateTime(serverDT.Rows(0)(0)).Year
+        Else
+            Variables.ServerYear = DateTime.Now.Year
+        End If
+
+    End Sub
+
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class LoadingForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,66 +20,52 @@ Partial Class LoadingForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LoadingForm))
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.BunifuCircleProgressbar1 = New Bunifu.Framework.UI.BunifuCircleProgressbar()
+        Me.lblMessage = New System.Windows.Forms.Label()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.SuspendLayout()
         '
-        'Timer1
+        'lblMessage
         '
+        Me.lblMessage.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lblMessage.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMessage.Location = New System.Drawing.Point(0, 0)
+        Me.lblMessage.Name = "lblMessage"
+        Me.lblMessage.Size = New System.Drawing.Size(284, 61)
+        Me.lblMessage.TabIndex = 0
+        Me.lblMessage.Text = "Please wait..."
+        Me.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label1
+        'ProgressBar1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(361, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Label1"
-        '
-        'BunifuCircleProgressbar1
-        '
-        Me.BunifuCircleProgressbar1.animated = True
-        Me.BunifuCircleProgressbar1.animationIterval = 5
-        Me.BunifuCircleProgressbar1.animationSpeed = 300
-        Me.BunifuCircleProgressbar1.BackColor = System.Drawing.Color.White
-        Me.BunifuCircleProgressbar1.BackgroundImage = CType(resources.GetObject("BunifuCircleProgressbar1.BackgroundImage"), System.Drawing.Image)
-        Me.BunifuCircleProgressbar1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!)
-        Me.BunifuCircleProgressbar1.ForeColor = System.Drawing.Color.SeaGreen
-        Me.BunifuCircleProgressbar1.LabelVisible = True
-        Me.BunifuCircleProgressbar1.LineProgressThickness = 8
-        Me.BunifuCircleProgressbar1.LineThickness = 5
-        Me.BunifuCircleProgressbar1.Location = New System.Drawing.Point(268, 108)
-        Me.BunifuCircleProgressbar1.Margin = New System.Windows.Forms.Padding(10, 9, 10, 9)
-        Me.BunifuCircleProgressbar1.MaxValue = 100
-        Me.BunifuCircleProgressbar1.Name = "BunifuCircleProgressbar1"
-        Me.BunifuCircleProgressbar1.ProgressBackColor = System.Drawing.Color.Gainsboro
-        Me.BunifuCircleProgressbar1.ProgressColor = System.Drawing.Color.SeaGreen
-        Me.BunifuCircleProgressbar1.Size = New System.Drawing.Size(201, 201)
-        Me.BunifuCircleProgressbar1.TabIndex = 2
-        Me.BunifuCircleProgressbar1.Value = 0
+        Me.ProgressBar1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ProgressBar1.Location = New System.Drawing.Point(0, 38)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(284, 23)
+        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
+        Me.ProgressBar1.TabIndex = 1
         '
         'LoadingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.BunifuCircleProgressbar1)
-        Me.Controls.Add(Me.Label1)
+        Me.ClientSize = New System.Drawing.Size(284, 61)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.ProgressBar1)
+        Me.Controls.Add(Me.lblMessage)
         Me.Name = "LoadingForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LoadingForm"
+        Me.TopMost = True
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents Label1 As Label
-    Friend WithEvents BunifuCircleProgressbar1 As Bunifu.Framework.UI.BunifuCircleProgressbar
+    Friend WithEvents lblMessage As Label
+    Friend WithEvents ProgressBar1 As ProgressBar
 End Class

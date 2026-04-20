@@ -149,6 +149,30 @@ Namespace My
                 Me("OfficerName") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ServerYear() As String
+            Get
+                Return CType(Me("ServerYear"),String)
+            End Get
+            Set
+                Me("ServerYear") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property AccountType() As String
+            Get
+                Return CType(Me("AccountType"),String)
+            End Get
+            Set
+                Me("AccountType") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

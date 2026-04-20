@@ -44,6 +44,7 @@ Partial Class OfficeSignatory
         Me.BunifuCards3 = New Bunifu.Framework.UI.BunifuCards()
         Me.btndelete = New System.Windows.Forms.Button()
         Me.btnchange = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.BunifuCards1.SuspendLayout()
@@ -278,6 +279,7 @@ Partial Class OfficeSignatory
         Me.BunifuCards2.BorderRadius = 5
         Me.BunifuCards2.BottomSahddow = True
         Me.BunifuCards2.color = System.Drawing.Color.White
+        Me.BunifuCards2.Controls.Add(Me.Label8)
         Me.BunifuCards2.Controls.Add(Me.txtposition2)
         Me.BunifuCards2.Controls.Add(Me.txthead2)
         Me.BunifuCards2.Controls.Add(Me.Label6)
@@ -304,7 +306,7 @@ Partial Class OfficeSignatory
         Me.txtposition2.Font = New System.Drawing.Font("Century Gothic", 12.0!)
         Me.txtposition2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.txtposition2.isPassword = False
-        Me.txtposition2.Location = New System.Drawing.Point(361, 110)
+        Me.txtposition2.Location = New System.Drawing.Point(361, 120)
         Me.txtposition2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtposition2.MaxLength = 32767
         Me.txtposition2.Name = "txtposition2"
@@ -327,7 +329,7 @@ Partial Class OfficeSignatory
         Me.txthead2.Font = New System.Drawing.Font("Century Gothic", 12.0!)
         Me.txthead2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.txthead2.isPassword = False
-        Me.txthead2.Location = New System.Drawing.Point(361, 37)
+        Me.txthead2.Location = New System.Drawing.Point(361, 47)
         Me.txthead2.Margin = New System.Windows.Forms.Padding(4)
         Me.txthead2.MaxLength = 32767
         Me.txthead2.Name = "txthead2"
@@ -342,7 +344,7 @@ Partial Class OfficeSignatory
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(110, 128)
+        Me.Label6.Location = New System.Drawing.Point(110, 138)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(75, 19)
         Me.Label6.TabIndex = 54
@@ -354,7 +356,7 @@ Partial Class OfficeSignatory
         Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(110, 72)
+        Me.Label7.Location = New System.Drawing.Point(110, 82)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(170, 19)
         Me.Label7.TabIndex = 52
@@ -404,6 +406,17 @@ Partial Class OfficeSignatory
         Me.btnchange.Text = "Change Office Head"
         Me.btnchange.UseVisualStyleBackColor = False
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Label8.Location = New System.Drawing.Point(9, 9)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(348, 16)
+        Me.Label8.TabIndex = 59
+        Me.Label8.Text = "If the Head is different from the Original Office Head"
+        '
         'OfficeSignatory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -451,4 +464,5 @@ Partial Class OfficeSignatory
     Friend WithEvents BunifuCards3 As Bunifu.Framework.UI.BunifuCards
     Friend WithEvents btnchange As Button
     Friend WithEvents btndelete As Button
+    Friend WithEvents Label8 As Label
 End Class

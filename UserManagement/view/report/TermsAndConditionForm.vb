@@ -1,5 +1,7 @@
 ﻿Public Class TermsAndConditionForm
     Private Sub TermsAndConditionForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cbterms.Checked = False
+        Variables.checkterms = False
         Dim htmlPath As String = Application.StartupPath & "\view\report\Terms.html"
         Dim htmlTemplate As String = IO.File.ReadAllText(htmlPath)
         htmlTemplate = htmlTemplate.Replace("[Insert Office Name]", My.Settings.OfficeName) _
@@ -32,7 +34,6 @@
     Private Sub btncancel_Click(sender As Object, e As EventArgs) Handles btncancel.Click
         Variables.checkterms = False
         cbterms.Checked = Variables.checkterms
-        Me.Hide()
-        Main.Activate()
+        Me.DialogResult = DialogResult.Cancel
     End Sub
 End Class

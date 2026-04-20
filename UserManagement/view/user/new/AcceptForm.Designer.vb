@@ -46,7 +46,7 @@ Partial Class AcceptForm
         Me.cbTerms.Checked = False
         Me.cbTerms.CheckedOnColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(117, Byte), Integer))
         Me.cbTerms.ForeColor = System.Drawing.Color.White
-        Me.cbTerms.Location = New System.Drawing.Point(62, 179)
+        Me.cbTerms.Location = New System.Drawing.Point(39, 179)
         Me.cbTerms.Name = "cbTerms"
         Me.cbTerms.Size = New System.Drawing.Size(20, 20)
         Me.cbTerms.TabIndex = 45
@@ -58,7 +58,7 @@ Partial Class AcceptForm
         Me.cbPolicy.Checked = False
         Me.cbPolicy.CheckedOnColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(117, Byte), Integer))
         Me.cbPolicy.ForeColor = System.Drawing.Color.White
-        Me.cbPolicy.Location = New System.Drawing.Point(62, 137)
+        Me.cbPolicy.Location = New System.Drawing.Point(39, 137)
         Me.cbPolicy.Name = "cbPolicy"
         Me.cbPolicy.Size = New System.Drawing.Size(20, 20)
         Me.cbPolicy.TabIndex = 44
@@ -68,7 +68,7 @@ Partial Class AcceptForm
         Me.lblprivacy.AutoSize = True
         Me.lblprivacy.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblprivacy.LinkColor = System.Drawing.Color.Black
-        Me.lblprivacy.Location = New System.Drawing.Point(191, 137)
+        Me.lblprivacy.Location = New System.Drawing.Point(168, 137)
         Me.lblprivacy.Name = "lblprivacy"
         Me.lblprivacy.Size = New System.Drawing.Size(121, 19)
         Me.lblprivacy.TabIndex = 43
@@ -81,7 +81,7 @@ Partial Class AcceptForm
         Me.lblterms.AutoSize = True
         Me.lblterms.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblterms.LinkColor = System.Drawing.Color.Black
-        Me.lblterms.Location = New System.Drawing.Point(164, 178)
+        Me.lblterms.Location = New System.Drawing.Point(141, 178)
         Me.lblterms.Name = "lblterms"
         Me.lblterms.Size = New System.Drawing.Size(186, 19)
         Me.lblterms.TabIndex = 42
@@ -96,7 +96,7 @@ Partial Class AcceptForm
         Me.cbAll.Checked = False
         Me.cbAll.CheckedOnColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(117, Byte), Integer))
         Me.cbAll.ForeColor = System.Drawing.Color.White
-        Me.cbAll.Location = New System.Drawing.Point(62, 225)
+        Me.cbAll.Location = New System.Drawing.Point(39, 225)
         Me.cbAll.Name = "cbAll"
         Me.cbAll.Size = New System.Drawing.Size(20, 20)
         Me.cbAll.TabIndex = 47
@@ -105,17 +105,17 @@ Partial Class AcceptForm
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(350, 178)
+        Me.Label1.Location = New System.Drawing.Point(327, 178)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(195, 19)
+        Me.Label1.Size = New System.Drawing.Size(298, 19)
         Me.Label1.TabIndex = 48
-        Me.Label1.Text = "provided by the compony."
+        Me.Label1.Text = "provided by the Provincial Budget Office."
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(88, 179)
+        Me.Label2.Location = New System.Drawing.Point(65, 179)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(78, 19)
         Me.Label2.TabIndex = 49
@@ -125,7 +125,7 @@ Partial Class AcceptForm
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(88, 137)
+        Me.Label3.Location = New System.Drawing.Point(65, 137)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(105, 19)
         Me.Label3.TabIndex = 50
@@ -198,7 +198,7 @@ Partial Class AcceptForm
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(88, 225)
+        Me.Label4.Location = New System.Drawing.Point(65, 225)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(80, 19)
         Me.Label4.TabIndex = 54

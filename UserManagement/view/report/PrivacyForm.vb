@@ -1,6 +1,8 @@
 ﻿
 Public Class PrivacyForm
     Private Sub PrivacyForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cbpolicy.Checked = False
+        Variables.checkpolicy = False
         Dim htmlPath As String = Application.StartupPath & "\view\report\Privacy.html"
         Dim htmlTemplate As String = IO.File.ReadAllText(htmlPath)
         htmlTemplate = htmlTemplate.Replace("[Insert Office Name]", My.Settings.OfficeName) _
@@ -11,7 +13,7 @@ Public Class PrivacyForm
         WebBrowser1.DocumentText = htmlTemplate
     End Sub
     Private Sub btnaccept_Click(sender As Object, e As EventArgs) Handles btnaccept.Click
-        If Variables.checkterms = True Then
+        If Variables.checkpolicy = True Then
             Me.DialogResult = DialogResult.OK
             Me.Close()
         Else
@@ -24,7 +26,6 @@ Public Class PrivacyForm
     Private Sub btncancel_Click(sender As Object, e As EventArgs) Handles btncancel.Click
         Variables.checkpolicy = False
         cbpolicy.Checked = Variables.checkpolicy
-        Me.Hide()
-        Main.Activate()
+        Me.DialogResult = DialogResult.Cancel
     End Sub
 End Class

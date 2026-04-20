@@ -25,9 +25,9 @@
         End If
     End Sub
     Private Sub AcceptForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'cbTerms.Checked = False
-        'cbPolicy.Checked = False
-        'cbAll.Checked = False
+        cbTerms.Checked = False
+        cbPolicy.Checked = False
+        cbAll.Checked = False
     End Sub
 
     Private Sub lblterms_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblterms.LinkClicked
@@ -36,7 +36,8 @@
         If showTermsAndConditionForm = DialogResult.OK Then
             'MsgBox(Variables.checkterms)
             cbTerms.Checked = Variables.checkterms
-
+        Else
+            cbTerms.Checked = False
         End If
 
     End Sub
@@ -46,11 +47,16 @@
         If showPrivacyForm = DialogResult.OK Then
             'MsgBox(Variables.checkterms)
             cbPolicy.Checked = Variables.checkpolicy
-
+        Else
+            cbPolicy.Checked = False
         End If
     End Sub
 
     Private Sub cbTerms_OnChange(sender As Object, e As EventArgs) Handles cbTerms.OnChange
+
+    End Sub
+
+    Private Sub cbPolicy_OnChange(sender As Object, e As EventArgs) Handles cbPolicy.OnChange
 
     End Sub
 End Class

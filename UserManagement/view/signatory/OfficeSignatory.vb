@@ -65,7 +65,7 @@
         Try
             If officeSigDT.Rows.Count > 0 Then
                 Dim officeSigDT = SqlLoad.MySql_SelectString("signatory,sigpos", "gl_offices_signatories", , $"where userid ='{iv_userid}'and  officeid ='{iv_officeid}'")
-                lblName.Text = officeSigDT.Rows(0).Item("signatory").ToString
+                'lblName.Text = officeSigDT.Rows(0).Item("signatory").ToString
                 txthead1.Text = officeDT.Rows(0).Item("officeheadpersonnel").ToString
                 txtposition1.Text = officeDT.Rows(0).Item("officeheadpos").ToString
                 txthead2.Text = officeSigDT.Rows(0).Item("signatory").ToString

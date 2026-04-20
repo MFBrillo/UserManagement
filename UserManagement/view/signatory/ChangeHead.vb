@@ -9,7 +9,7 @@
         Dim result As DialogResult
         result = MessageBox.Show("Do you want to Save?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
-            Variables.head2 = txthead2.Text
+            Variables.head2 = txthead2.Text.ToUpper()
             Variables.position2 = txtposition2.Text
             Me.DialogResult = DialogResult.OK
         End If

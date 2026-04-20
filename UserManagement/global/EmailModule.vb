@@ -4,11 +4,11 @@ Module EmailModule
         Try
             Dim smtp As New SmtpClient("smtp.gmail.com") ' Example using Gmail
             smtp.Port = 587
-            smtp.Credentials = New Net.NetworkCredential("pbodagcapiz@gmail.com", "zwrt sywh isqw hhqd") ' Change this
+            smtp.Credentials = New Net.NetworkCredential("crushneq@gmail.com", "wvxb ghrz hmxm udvo") ' Change this
             smtp.EnableSsl = True
 
             Dim mail As New MailMessage()
-            mail.From = New MailAddress("pbodagcapiz@gmail.com", "PBO App")
+            mail.From = New MailAddress("crushneq@gmail.com", "PBO App")
             mail.To.Add(toEmail)
             mail.Subject = subject
             mail.Body = body
