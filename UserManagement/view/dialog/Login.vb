@@ -11,6 +11,10 @@
         LoadServerYear()
     End Sub
     Private Sub lblclose_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblclose.LinkClicked
+        'CustomYesNoPrompt("Confirmation", "Do you want to Close the Application?")
+        'If YesNoPrompt.YesOption = True Then
+        '    End
+        'End If
         Dim result As DialogResult
         result = MessageBox.Show("Do you want to Close the Application?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then

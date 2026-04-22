@@ -52,9 +52,7 @@
     Sub load_officeAdmin()
         Dim SqlLoad As New MySQLCore
         OfficeDT = SqlLoad.MySql_SelectString("*", "gl_offices")
-
     End Sub
-
     Private Sub btnPS_Click(sender As Object, e As EventArgs)
         SetRegistry(1, "PERSONAL SERVICES")
     End Sub

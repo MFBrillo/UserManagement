@@ -17,12 +17,9 @@
     Dim statusText As String
 
     Dim statusCheck As String
-
     Private Sub PRRecord_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         formload()
-        'dvWidthDataID()
     End Sub
-
     Sub formload()
         Dim grid As DataGridView = DirectCast(dgvDataID, DataGridView)
         If Variables.login_accesslevel <> 3 Then
@@ -368,5 +365,26 @@
         Dim id = grid.Rows(0).Cells("id").Value.ToString()
 
         SqlLoad.MySql_Delete("gov_prdata_id", $"id = '{prdataid_id}'")
+    End Sub
+    Private Sub txtSearch_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSearch.KeyPress
+        loadAdmin()
+        If e.KeyChar = Convert.ToChar(Keys.Enter) Then
+            e.Handled = True
+            Try
+                If prdataIDDT.Rows.Count > 0 Then
+                    Dim conditions As New List(Of LinQCondition)()
+                    conditions.Add(New LinQCondition With {
+                    .Column = "prnumber",
+                    .Value = txtSearch.Text,
+                    .ComparisonType = ComparisonTypeEnum.Equal_enum
+                })
+                    Dim filteredDataTable1 As DataTable = Linq_Query(prdataIDDT, conditions, useOrOperator:=True)
+                    dgvDataID.DataSource = filteredDataTable1
+                End If
+            Catch ex As Exception
+                MsgBox(Err.Description)
+            End Try
+
+        End If
     End Sub
 End Class

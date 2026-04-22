@@ -32,7 +32,6 @@
             If grid.Columns.Contains(col) Then grid.Columns(col).Visible = False
         Next
     End Sub
-
     Public Sub Datagrid_RenameColumn(ByVal grid As DataGridView, ByVal cols As String(), ByVal newcolumn As String())
         Dim i = 0
         For Each col In cols
@@ -42,8 +41,6 @@
             i += 1
         Next
     End Sub
-
-
     Friend Sub Add_GridButton(ByVal grid As DataGridView, ByVal header As String, ByVal btnText As String, ByVal btnName As String, ByVal displayedIndex As Integer, Optional btnwidth As Integer = 80)
 
         Dim btn As New DataGridViewButtonColumn With {
@@ -105,7 +102,6 @@
             End If
         Next
     End Sub
-
     Friend Sub CenterColumnsByName(dgv As DataGridView, ParamArray columnNames() As String)
         For Each colName In columnNames
             If dgv.Columns.Contains(colName) Then
@@ -173,7 +169,6 @@
         RemoveHandler grid.CellPainting, AddressOf Grid_CellPainting
         AddHandler grid.CellPainting, AddressOf Grid_CellPainting
     End Sub
-
     Private Sub Grid_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs)
         Dim grid = DirectCast(sender, DataGridView)
         If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then Exit Sub
@@ -215,7 +210,6 @@
 
         e.Handled = True
     End Sub
-
     Public Sub FormShowUserControl(ByVal uc As UserControl)                      'Clear panel and add form projects/modules
         Main.MainPanel.Controls.Clear()
         Main.MainPanel.Controls.Add(uc)
