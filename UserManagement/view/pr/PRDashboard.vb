@@ -19,11 +19,9 @@
             officeid = Variables.officeid
             load_offices()
         End If
-
         SetRegistry(2, "MAINTENANCE AND OTHER OPERATING EXPENSES")
         normalFont = New Font("Tahoma", 10.0F, FontStyle.Regular)
         boldFont = New Font(dgvPrRegular.Font, FontStyle.Bold)
-
         txtBudgetyear.Text = My.MySettings.Default.ServerYear
     End Sub
     Sub Custom_LoadOffice()
@@ -58,7 +56,6 @@
     End Sub
     Private Sub btnMOOE_Click(sender As Object, e As EventArgs) Handles btnMOOE.Click
         SetRegistry(2, "MAINTENANCE AND OTHER OPERATING EXPENSES")
-
     End Sub
     Private Sub btnCO_Click(sender As Object, e As EventArgs) Handles btnCO.Click
         SetRegistry(3, "CAPITAL OUTLAY")
@@ -91,7 +88,6 @@
                 MsgBox(Err.Description)
             End Try
         End If
-
         If e.KeyCode = Keys.Enter Then
             If dgvOffice.CurrentRow IsNot Nothing Then
                 Dim selectedRow As DataGridViewRow = dgvOffice.CurrentRow
@@ -111,10 +107,8 @@
     Private Sub ShowPanelUnderTextBox(tb As Bunifu.Framework.UI.BunifuMetroTextbox, pnl As Panel)
         pnl.Parent = Me
         pnl.Dock = DockStyle.None
-
         Dim screenPoint = tb.Parent.PointToScreen(tb.Location)
         Dim formPoint = Me.PointToClient(screenPoint)
-
         pnl.Location = New Point(formPoint.X, formPoint.Y + tb.Height)
         pnl.Width = tb.Width
         pnl.BringToFront()
@@ -146,9 +140,7 @@
         pr_params.Add("_officeid", officeid)
         pr_params.Add("_registry", pr_registry)
         prbalanceDT = sql.MySQL_Datatable("reports_pbo_pr_AccountSpecial", pr_params)
-
         dgvPrSpecial.DataSource = prbalanceDT
-
         Add_GridButton(dgvPrSpecial, "Clear", "Clear", "btnclear", 1, 80)
         Add_GridButton(dgvPrSpecial, "Add", "Add", "btnadd", 0, 80)
         Add_GridButton(dgvPrSpecial, "Record", "Record", "btnrecord", dgvPrSpecial.Columns.Count, 80)
@@ -163,9 +155,7 @@
         pr_params.Add("_officeid", officeid)
         pr_params.Add("_registry", pr_registry)
         prbalanceDT = sql.MySQL_Datatable("reports_pbo_pr_Account", pr_params)
-
         dgvPrRegular.DataSource = prbalanceDT
-
         Add_GridButton(dgvPrRegular, "Clear", "Clear", "btnclear", 1, 80)
         Add_GridButton(dgvPrRegular, "Add", "Add", "btnadd", 0, 80)
         Add_GridButton(dgvPrRegular, "Record", "Record", "btnrecord", dgvPrRegular.Columns.Count, 80)
@@ -250,7 +240,6 @@
         LoadPRDataSpecial()
     End Sub
     Public Sub loadPR()
-
         If txtBudgetyear.Text = "" Then
             MsgBox("Please input year")
         Else
@@ -261,7 +250,6 @@
         accounttype = 1
         LoadPRData()
     End Sub
-
     Private Sub dgvOffice_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOffice.CellContentClick
         If e.RowIndex >= 0 Then
             Dim selectedRow As DataGridViewRow = dgvOffice.Rows(e.RowIndex)
@@ -276,27 +264,22 @@
     End Sub
     Private Sub dgvPrRegular_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
          Handles dgvPrRegular.CellClick
-        ' Ignore header clicks
         If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then Exit Sub
         Dim SqlLoad As New MySQLCore
         Dim dgv = CType(sender, DataGridView)
         Dim colName = dgv.Columns(e.ColumnIndex).Name
         Dim row = dgv.Rows(e.RowIndex)
-
-        ' ADD button → Bold row
         If colName = "btnadd" Then
             My.MySettings.Default.AccountType = 1
             row.DefaultCellStyle.Font = boldFont
             row.DefaultCellStyle.ForeColor = Color.White
             row.DefaultCellStyle.BackColor = Drawing.Color.FromArgb(245, 173, 5)
-
             Dim approid = row.Cells("approid").Value.ToString
             Dim existingRow As DataRow() = Variables.prDatatable.Select($"approid = '{approid}'")
             If existingRow.Length > 0 Then
                 MessageBox.Show("This account is already added!", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
-
             Dim acctid = row.Cells("acctid").Value.ToString
             Dim registryid = row.Cells("registryid").Value.ToString
             Dim fundid = row.Cells("fundid").Value.ToString
@@ -306,14 +289,10 @@
             Dim allo_balance = row.Cells("UNOBLIGATED BALANCE").Value.ToString
             Dim pr = "0" + row.Cells("PURCHASE REQUEST").Value.ToString
             Dim currentbalance = row.Cells("CURRENT BALANCE").Value.ToString
-
             Variables.prDatatable.Rows.Add(approid, officeid, acctid, registryid, fundid, account, accountcode, total_appro, allo_balance, pr, currentbalance)
             My.MySettings.Default.Save()
-            ' CLEAR button → Regular row
         ElseIf colName = "btnclear" Then
-
             Dim approid As String = row.Cells("approid").Value.ToString()
-
             Dim rows = Variables.prDatatable.Select($"approid = '{approid.Replace("'", "''")}'")
             For Each r As DataRow In rows
                 Variables.prDatatable.Rows.Remove(r)
@@ -326,32 +305,27 @@
             Variables.pr_approid = row.Cells("approid").Value.ToString
             Variables.pr_account = row.Cells("ACCOUNTS").Value.ToString
             Variables.pr_accountcode = row.Cells("ACCOUNT CODE").Value.ToString
-
             Opaque.Show()
             PRDetail.ShowDialog()
         End If
     End Sub
     Private Sub dgvPrSpecial_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPrSpecial.CellClick
-        ' Ignore header clicks
         If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then Exit Sub
         Dim SqlLoad As New MySQLCore
         Dim dgv = CType(sender, DataGridView)
         Dim colName = dgv.Columns(e.ColumnIndex).Name
         Dim row = dgv.Rows(e.RowIndex)
-
         If colName = "btnadd" Then
             My.MySettings.Default.AccountType = 2
             row.DefaultCellStyle.Font = boldFont
             row.DefaultCellStyle.ForeColor = Color.White
             row.DefaultCellStyle.BackColor = Drawing.Color.FromArgb(245, 173, 5)
-
             Dim approid = row.Cells("approid").Value.ToString
             Dim existingRow As DataRow() = Variables.prDatatable.Select($"approid = '{approid}'")
             If existingRow.Length > 0 Then
                 MessageBox.Show("This account is already added!", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
-
             Dim registryid = row.Cells("registryid").Value.ToString
             Dim spcfundid = row.Cells("spcfundid").Value.ToString
             Dim transidprogram = row.Cells("transidprogram").Value.ToString
@@ -361,16 +335,10 @@
             Dim allo_balance = row.Cells("UNOBLIGATED BALANCE").Value.ToString
             Dim pr = "0" + row.Cells("PURCHASE REQUEST").Value.ToString
             Dim currentbalance = row.Cells("CURRENT BALANCE").Value.ToString
-
             Variables.prDatatable.Rows.Add(approid, officeid, registryid, spcfundid, transidprogram, aip, aipcode, total_appro, allo_balance, pr, currentbalance)
-            ' CLEAR button → Regular row
-
             My.MySettings.Default.Save()
-
         ElseIf colName = "btnclear" Then
-
             Dim approid As String = row.Cells("approid").Value.ToString()
-
             Dim rows = Variables.prDatatable.Select($"approid = '{approid.Replace("'", "''")}'")
             For Each r As DataRow In rows
                 Variables.prDatatable.Rows.Remove(r)
@@ -418,7 +386,9 @@
     End Sub
     Private Sub btnPR_Click(sender As Object, e As EventArgs) Handles btnPR.Click
         If Variables.prDatatable Is Nothing OrElse Variables.prDatatable.Rows.Count = 0 Then
-            MsgBox("Please select account")
+            'MsgBox("Please select account")
+            CustomMsg("Confirmation", "Please select account")
+
         Else
             Opaque.Show()
             PRAmount.ShowDialog()
@@ -447,10 +417,7 @@
         dvWidthAccounts()
     End Sub
     Private Sub txtsearch_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtsearch.KeyPress
-        'If e.KeyChar = Convert.ToChar(Keys.Enter) Then
-        '    e.Handled = True
-        '    searchAccounts()
-        'End If
+
     End Sub
     Private Sub btnRecords_Click(sender As Object, e As EventArgs) Handles btnRecords.Click
         Opaque.Show()
@@ -464,7 +431,6 @@
         Select Case sender
             Case "btnAccount"
                 Variables.prDatatable.Clear()
-
                 loadPR()
                 dgvPrRegular.Visible = True
                 dgvPrRegular.Dock = DockStyle.Fill
@@ -481,8 +447,5 @@
                 My.MySettings.Default.AccountType = 2
                 My.MySettings.Default.Save()
         End Select
-
     End Sub
-
-
 End Class

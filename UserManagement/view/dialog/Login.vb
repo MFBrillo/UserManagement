@@ -54,7 +54,6 @@
 
                 Dim uc = New UserManagement
                 Main.ShowUserControl(uc)
-
             Else
                 CustomMsg("Log in", "Successful Login!")
                 Main.btnDashboard.Visible = False
@@ -65,7 +64,6 @@
                 Dim uc = New PRDashboard
                 Main.ShowUserControl(uc)
             End If
-
             Main.btnUserSetting.Visible = True
             Main.Activate()
             Opaque.Close()
